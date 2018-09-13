@@ -1,4 +1,4 @@
-
+# factorial 구현
 def factorial(num):
     if num == 1:
         return 1
@@ -10,7 +10,8 @@ def factorial(num):
 print(factorial(5))
 
 
-# Array 값 더하기 through Recursion
+# Array 안의 원소 값 모두 더하기 through Recursion
+# (p.95 PRACTICE 4-1 sum 함수)
 
 # (1) 최 앞단의 원소 제거
 def fact_array(array):
