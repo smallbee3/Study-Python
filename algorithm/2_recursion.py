@@ -13,7 +13,7 @@ print(factorial(5))
 # Array 안의 원소 값 모두 더하기 through Recursion
 # (p.95 PRACTICE 4-1 sum 함수)
 
-# (1) 최 앞단의 원소 제거
+# (1) 최 뒷단의 원소 제거
 def fact_array(array):
 
     if array != []:
@@ -29,7 +29,7 @@ def fact_array(array):
 print(fact_array([1, 2, 3, 4, -1, 100]))
 
 
-# (2) 최 뒤단의 원소 제거
+# (2) 최 앞단의 원소 제거
 def fact_array2(array):
 
     if array != []:
