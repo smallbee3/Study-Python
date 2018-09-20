@@ -89,3 +89,24 @@ def func2(search_queue):
 search_queue = deque()
 search_queue += graph['you']
 func2(search_queue)
+
+
+# Book answer (2)
+
+def search(name):
+    search_queue = deque()
+    search_queue += graph[name]
+    searched = []
+    while search_queue:
+        person = search_queue.popleft()
+        if not person in searched:
+            if person_is_seller(person):
+                print(f'{person} is a mango seller!')
+                return True
+            else:
+                search_queue += graph[person]
+                searched.append(person)
+    return False
+
+
+search("you")
