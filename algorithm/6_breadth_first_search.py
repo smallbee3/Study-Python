@@ -1,4 +1,4 @@
-import queue
+from collections import deque
 
 graph = dict()
 graph['you'] = ['alice', 'bob', 'claire']
@@ -11,32 +11,71 @@ graph['thom'] = []
 graph['jonny'] = []
 
 
-def func(q):
-    while q:
+# (1) q 중복 제거 전
+
+# def func(q):
+#     while q.queue:
+#         print(q.queue)
+#         person = q.get()
+#
+#         if person.endswith('y'):
+#             return print(f'{person} is mango sales person.')
+#         for person in graph[person]:
+#             q.put(person)
+#     return print("There is no mango sales person.")
+#
+#
+# q = queue.Queue()
+#
+# for person in graph['you']:
+#     q.put(person)
+# func(q)
+
+
+# (2) q 중복제거 후
+
+
+
+def func(name):
+    import queue
+    searched = []
+
+    q = queue.Queue()
+    q.queue += graph[name]
+
+    # while q:
+    # -> q는 참이기 때문에 CLI 에서 확인하면 무한 loop를 도는 것으로 확인할 수 있음.
+    while q.queue:
         print(q.queue)
+        print(searched)
         person = q.get()
 
-        if person.endswith('y'):
-            return print(f'{person} is mango sales person.')
-        for person in graph[person]:
-            q.put(person)
+        if person not in searched:
+            if person.endswith('m'):
+                return print(f'{person} is mango sales person.')
+
+        # check_list += person
+        # -> ['a','l','i','c','e'] 가 들어가는 문제 발생.
+
+            else:
+                for p in graph[person]:
+                    if p not in searched:
+                        q.put(p)
+                searched.append(person)
+
     return print("There is no mango sales person.")
 
 
-q = queue.Queue()
-
-for person in graph['you']:
-    q.put(person)
-func(q)
+func('you')
 
 
-# Book answer
+# Book answer (1)
 
 def person_is_seller(name):
     return name[-1] == 'y'
 
 
-def fun2(search_queue):
+def func2(search_queue):
     while search_queue:
         person = search_queue.popleft()
         if person_is_seller(person):
@@ -47,7 +86,6 @@ def fun2(search_queue):
     return False
 
 
-from collections import deque
 search_queue = deque()
 search_queue += graph['you']
-fun2(search_queue)
+func2(search_queue)
