@@ -13,11 +13,12 @@ graph['BAR'] = ['BAT']
 graph['BAT'] = []
 
 
+# (1) 최단경로까지 도달하지만 해당 경로는 출력하지 않음.
+
 def search(name):
     q = deque()
     q += graph[name]
     searched = []
-    shortest = []
     while q:
         # print(searched)
         # print(q)
@@ -42,6 +43,40 @@ def search(name):
 
 search('CAB')
 
+
+# (2) 최단 경로를 출력
+
+def search2(name):
+    q = deque()
+    for i in graph[name]:
+        q.append([i] + [name])
+    searched = []
+    while q:
+        # print(searched)
+        print(q)
+        node_list = q.popleft()
+        print(node_list)
+        node = node_list[0]
+        # print(node)
+        if node not in searched:
+            if node == 'BAT':
+                print('도착 최단 경로')
+                print(f'경로 :')
+                [print(f'{i}') for i in node_list]
+                return True
+            else:
+                # q += graph[node]
+                for n in graph[node]:
+                    if n not in q and n not in searched:
+                        node_list2 = [n] + node_list
+                        q.append(node_list2)
+                searched.append(node)
+
+    print('BAT까지 가는 길이 존재하지 않습니다.')
+    return False
+
+
+search2('CAB')
 
 # 6-3
 # 올바른 것 : B
