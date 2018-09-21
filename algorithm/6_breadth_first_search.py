@@ -137,7 +137,10 @@ def search3(name):
                 print(f'{person} is a mango seller!')
                 return True
             else:
-                search_queue += graph[person]
+                # search_queue += graph[person]
+                for p in graph[person]:
+                    if p not in search_queue:
+                        search_queue.append(p)
                 searched.append(person)
     return False
 
