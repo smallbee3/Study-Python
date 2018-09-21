@@ -1,4 +1,3 @@
-from collections import deque
 
 graph = dict()
 graph['you'] = ['alice', 'bob', 'claire']
@@ -32,16 +31,24 @@ graph['jonny'] = []
 # func(q)
 
 
-# (2) q 중복제거 후
+# (2) 망고 판매상 검사 중복 제거 + q 중복 원소 제거
 
+import queue
 
 
 def func(name):
-    import queue
+
     searched = []
 
     q = queue.Queue()
     q.queue += graph[name]
+    # 이유는 모르나 위 문장이 PEP8 error 일으킴.
+    # 아래 코드는 PEP8 에러를 일으키지 않지만 정작 컴파일 시 TypeError: can only concatenate deque (not "list") to deque 발생
+
+    # q.queue = q.queue + graph[name]
+
+    print(q.queue)
+    print(type(q.queue))
 
     # while q:
     # -> q는 참이기 때문에 CLI 에서 확인하면 무한 loop를 도는 것으로 확인할 수 있음.
@@ -59,7 +66,9 @@ def func(name):
 
             else:
                 for p in graph[person]:
-                    if p not in searched:
+                    # if p not in searched:
+                    # 아래 한 줄로 queue에 'peggy' 중복 들어가는 것 해결
+                    if p not in searched and p not in q.queue:
                         q.put(p)
                 searched.append(person)
 
@@ -69,13 +78,18 @@ def func(name):
 func('you')
 
 
+from collections import deque
+
+
 # Book answer (1)
 
 def person_is_seller(name):
     return name[-1] == 'y'
 
 
-def func2(search_queue):
+def search(name):
+    search_queue = deque()
+    search_queue += graph[name]
     while search_queue:
         person = search_queue.popleft()
         if person_is_seller(person):
@@ -86,14 +100,12 @@ def func2(search_queue):
     return False
 
 
-search_queue = deque()
-search_queue += graph['you']
-func2(search_queue)
+search('you')
 
 
-# Book answer (2)
+# Book answer (2) - Redundancy eradicated
 
-def search(name):
+def search2(name):
     search_queue = deque()
     search_queue += graph[name]
     searched = []
@@ -109,4 +121,25 @@ def search(name):
     return False
 
 
-search("you")
+search2("you")
+
+
+# Book answer (2) - Redundancy eradicated upgraded
+
+def search3(name):
+    search_queue = deque()
+    search_queue += graph[name]
+    searched = []
+    while search_queue:
+        person = search_queue.popleft()
+        if not person in searched:
+            if person_is_seller(person):
+                print(f'{person} is a mango seller!')
+                return True
+            else:
+                search_queue += graph[person]
+                searched.append(person)
+    return False
+
+
+search3("you")
