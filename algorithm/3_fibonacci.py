@@ -1,7 +1,7 @@
 # fibonachi by recursion
 from helper import my_timer
 
-
+@my_timer
 def fibo(num):
     # arr = [1, 1]
     if num == 1:
@@ -64,7 +64,12 @@ def fibo2(num):
     else:
         a = 1
         b = 1
-        for i in range(2, num):
+        # for i in range(2, num):
+        # 여기서 i는 하는 역할이 없고, for ~ in range()는 결과적으로
+        # num-1 만큼 하단의 코드를 실행하는 것밖에는 역할이 없다.
+        # 특정 횟수만큼만 코드를 반복실행할 때 이 for ~ in range() 말고는 딱히 생각이 나지 않아서
+        # 그냥 이대로 둠. (while + i += 1 을 쓰는 방법이 있긴하다..
+        for i in range(num-2):
             c = a + b
             print(a, b, c)
             a = b
@@ -72,4 +77,4 @@ def fibo2(num):
         return c
 
 
-print(fibo2(3))
+print(fibo2(7))

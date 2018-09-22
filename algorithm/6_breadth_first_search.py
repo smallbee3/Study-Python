@@ -57,17 +57,19 @@ def func(name):
         print(searched)
         person = q.get()
 
+        # (1) 무한 반복 예외 사항을 처리
         if person not in searched:
             if person.endswith('m'):
                 return print(f'{person} is mango sales person.')
 
-        # check_list += person
+        # searched += person
         # -> ['a','l','i','c','e'] 가 들어가는 문제 발생.
 
             else:
                 for p in graph[person]:
                     # if p not in searched:
-                    # 아래 한 줄로 queue에 'peggy' 중복 들어가는 것 해결
+
+                    # (2) queue에 'peggy' 중복 들어가는 것 해결
                     if p not in searched and p not in q.queue:
                         q.put(p)
                 searched.append(person)
