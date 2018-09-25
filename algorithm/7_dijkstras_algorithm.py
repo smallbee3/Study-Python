@@ -21,6 +21,8 @@ costs = {}
 costs['a'] = 6
 costs['b'] = 2
 costs['final'] = infinity
+# 내가 추가한 것
+costs['start'] = 0
 
 # (3) Parents
 parents = {}
@@ -32,36 +34,33 @@ parents['fin'] = None
 processed = []
 
 
-def closest(node):
+# 책 내용을 잘못이해하고 가장 가격이 싼 노드가 아니라 가장 가중치가 작은
+# node를 고르는 것으로 착각하고 만든 불필요한 코드
 
-    key_list = list(graph[node].keys())
-    close_key = key_list[0]
-    close_value = graph[node][close_key]
-    for key in key_list[1:]:
-        if close_value > graph[node][key]:
-            close_value = graph[node][key]
-            close_key = key
-    return close_key
+# def closest(node):
+#     key_list = list(graph[node].keys())
+#     close_key = key_list[0]
+#     close_value = graph[node][close_key]
+#     for key in key_list[1:]:
+#         if close_value > graph[node][key]:
+#             close_value = graph[node][key]
+#             close_key = key
+#     return close_key
 
 
 def update_costs_and_parents(node):
     neighbor_list = list(graph[node].keys())
     for i in neighbor_list:
-        print(costs[i])
-        print(graph[node][i] + costs[node])
         if costs[i] > graph[node][i] + costs[node]:
             costs[i] = graph[node][i] + costs[node]
             parents[i] = node
 
 
-def next_node(fin):
-    node_dict = graph
+def next_node(node_dict):
     for i in processed:
         if i in node_dict:
             del node_dict[i]
-    if fin in node_dict:
-        del node_dict[fin]
-    print(node_dict)
+
     min_key = list(node_dict.keys())[0]
     min_value = costs[min_key]
     for key in list(node_dict.keys())[1:]:
@@ -74,22 +73,27 @@ def next_node(fin):
 def dijkstra(str, fin):
 
     node = str
-    while len(graph.keys()) > len(processed):
-        # for i in len(graph[node]):
-        #     key = graph[node][i]
-        #     graph['start'][key]
-        closest_node = closest(node)
+    # next_node 함수에서 쓰이는 node_dict를 여기서 만들어서 계속해서 del node_dict 과정이
+    # 중복되지 않도록 함.
+    # But, 이 코드가 next_node 내부가 아닌 밖에 동떨어져 있다는 점에서 좀 꺼림직함..
+    node_dict = graph.copy()
+    del node_dict[str]
+    del node_dict[fin]
 
-        update_costs_and_parents(closest_node)
+    while len(graph.keys()) - 2 > len(processed):
+        print(costs)
+        print(parents)
+        node = next_node(node_dict)
+        print(node)
 
+        update_costs_and_parents(node)
         processed.append(node)
-        node = next_node(fin)
 
     print(f'최종가격: {costs[fin]}')
 
     shortest_list = [fin]
     node = fin
-    while parents[node] != 'start':
+    while parents[node] != str:
         shortest_list.insert(0, parents[node])
         node = parents[node]
     shortest_list.insert(0, str)
