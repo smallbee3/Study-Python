@@ -155,3 +155,24 @@ def greedy_travel():
 
 
 greedy_travel()
+
+
+# 8-3
+# No
+
+# 8-4
+# No -> Yes
+# 탐욕 알고리즘의 여부는 근사 알고리즘(approximate algorithm)인지 여부와
+# 관계없이 문제를 해결해가는 알고리즘의 방법과 관계가 있다.
+
+# 8-5
+# No -> Yes
+
+# 8-6
+# NP-complete problem > 외판원문제, traveling salesperson problem
+
+# 8-7
+# NP-complete problem > 집합 커버링 문제, set_covering problem
+
+# 8-8
+# NP-complete problem > 외판원문제, traveling salesperson problem
