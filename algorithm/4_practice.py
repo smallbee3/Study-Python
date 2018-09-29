@@ -95,9 +95,30 @@ def find_big_element3(arr):
     return max
 
 
+# find_big_element2 에서 len(arr) == 2 일 때 오류 예외처리
+def find_big_element4(arr):
+    if len(arr) == 0:
+        pass
+    elif len(arr) == 1:
+        return arr[0]
+    else:
+        # max = arr[0]
+        # if max < arr[1]:
+        #     max = arr[1]
+        max = arr[0] if arr[0] > arr[1] else arr[1]
+
+        result = None
+        if len(arr) != 2:
+            result = find_big_element2(arr[2:])
+        if result != None and max < result:
+            max = result
+        return max
+
+
 print('4-3(2)')
 print(find_big_element2([11, 10, -33, 100, 1, 101, 2, 3]))
 print(find_big_element3([11, 10, -33, 100, 1, 101, 2, 3]))
+print(find_big_element4([321, 10, 122]))
 print(find_big_element2([]))
 
 
@@ -122,7 +143,7 @@ def max(list):
 
 
 print('4-3(3)')
-print(max([7, 366, 3, 11, 11111]))
+print(max([7, 7777777, 366, 3, 11, 11111]))
 print(max([1]))
 print(max([]))
 
@@ -145,12 +166,20 @@ print(max([]))
 
 # ----------------------------------------------------------------- #
 # 위 max3 함수를 만들고 나서 보니..
-# 책의 답안은 결과적으로 len(list) == 2 일 때 원소 2개를 비교하는 (비교적 효율적인) 코드가 한번만 실행되는데 비해
+# 책의 답안은 결과적으로 len(list) == 2 일 때 원소 2개를 비교하는 (비교적 효율적인) 코드가 맨 마지막에 한번만 실행되는데 비해
 # 내가 작성한 코드는 매번 2개의 원소를 비교하고 맨 마지막에 원소 1개일 때 len(list) == 1 에 한번 걸려서 반환하는 코드이기 때문에
 # 효율성으로 보자면
+# 최초 내 답안 -> n번 실행 -> O(n)
 # 책 답안 -> n번 실행 -> O(n)
 # 내 답안 -> n/2번 실행 -> O(n)
 # 빅오표기법으로는 같으나 그 실행속도의 차이가 2배 정도 벌어진다고 볼 수 있다.
+
+# 180929 추가
+# 애초에 'elif len(list) == 2:' 이 부분이 왜 있는지 모르겠다.
+
+# 180929 추가(2)
+# 내가 작성한 코드에서 len(list) == 2인 케이스를 넣어보았더니 오류가 난다.
+# 책에서 len(list) == 2: 이 부분이 아예 의미가 없지는 않은 것 같다.
 # ----------------------------------------------------------------- #
 
 
