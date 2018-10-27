@@ -1,6 +1,7 @@
 # fibonachi by recursion
 from helper import my_timer
 
+
 @my_timer
 def fibo(num):
     # arr = [1, 1]
@@ -78,3 +79,33 @@ def fibo2(num):
 
 
 print(fibo2(7))
+
+
+# 181027
+#  p.57
+
+#  Without Recursion
+def look_for_key(main_box):
+    pile = main_box.make_a_pile_to_look_through()
+    while pile is not None:
+        box = pile.grab_a_box()
+        for item in box:
+            if item.is_a_box():
+                pile.append(item)
+            elif item.is_a_key():
+                print('I found the key!')
+
+
+# With Recursion (*****)
+
+def look_for_key_with_recursion(box):
+
+    for item in box:
+        if item.is_a_key():
+            return print('I found the key!')
+        elif item.is_a_box():
+            return look_for_key_with_recursion(item)
+
+    return 'There is no key.'
+
+# look_for_key_with_recursion(main_box)
