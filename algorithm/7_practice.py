@@ -164,3 +164,21 @@ def dijkstra(str, fin):
 
 
 dijkstra('start', 'final')
+
+
+# 181027 다익스트라 알고리즘에서 배우고 갈 것.
+# 1. list.insert(0, element)
+# 2. 해시테이블 안의 해시테이블 (딕셔너리 안의 딕셔너리)
+#     Graph
+#     graph = {}
+#     # node start
+#     graph['start'] = {}
+#     graph['start']['a'] = 2
+#     graph['start']['b'] = 2
+#
+# 3. graph[node].keys()
+#
+# 4. lowest_cost = float('inf')
+#
+# 5. node = next_node(costs)처럼 costs를 parameter로 전달하는 것과 
+#    전달된 costs의 내부 값을 변경할 수 있는 사실

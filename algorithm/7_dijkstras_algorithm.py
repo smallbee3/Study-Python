@@ -34,7 +34,8 @@ parents['fin'] = None
 processed = []
 
 
-# 책 내용을 잘못이해하고 가장 가격이 싼 노드가 아니라 가장 가중치가 작은
+# 책 내용을 잘못이해하고 가장 가격이 싼 노드가 아니라
+# 가장 최근 선택한 노드에서 가장 가중치가 작은
 # node를 고르는 것으로 착각하고 만든 불필요한 코드
 
 # def closest(node):
@@ -49,6 +50,7 @@ processed = []
 
 
 def update_costs_and_parents(node):
+
     neighbor_list = list(graph[node].keys())
     for i in neighbor_list:
         if costs[i] > graph[node][i] + costs[node]:
@@ -72,7 +74,6 @@ def next_node(node_dict):
 
 def dijkstra(str, fin):
 
-    node = str
     # next_node 함수에서 쓰이는 node_dict를 여기서 만들어서 계속해서 del node_dict 과정이
     # 중복되지 않도록 함.
     # But, 이 코드가 next_node 내부가 아닌 밖에 동떨어져 있다는 점에서 좀 꺼림직함..

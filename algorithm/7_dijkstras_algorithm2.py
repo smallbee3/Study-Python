@@ -69,7 +69,6 @@ def next_node(node_dict):
 
 def dijkstra(str, fin):
 
-    node = str
     # next_node 함수에서 쓰이는 node_dict를 여기서 만들어서 계속해서 del node_dict 과정이
     # 중복되지 않도록 함.
     # But, 이 코드가 next_node 내부가 아닌 밖에 동떨어져 있다는 점에서 좀 꺼림직함..
