@@ -2,19 +2,18 @@
 
 
 europe = {}
-europe['a'] = [2, 60]
-europe['b'] = [3, 40]
-europe['c'] = [2, 50]
-europe['d'] = [1, 10]
-europe['e'] = [1, 10]
+europe['W'] = [0.5, 7]
+europe['G'] = [0.5, 6]
+europe['N'] = [1, 9]
+europe['B'] = [2, 9]
+europe['S'] = [0.5, 8]
 # 아래처럼 값이 주어지면 탐욕알고리즘의 한계를 보여준다. (만족이 더 낮아짐)
-# europe['e'] = [1, 15]
-europe['f'] = [1, 10]
+# europe['S'] = [1, 15]
 
 
 def greedy_travel():
 
-    traveling_days = 7
+    traveling_days = 2
     traveling_nation_list = []
     not_traveling_nation_list = []
 

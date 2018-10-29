@@ -162,7 +162,7 @@ greedy_travel()
 
 # 8-4
 # No -> Yes
-# 탐욕 알고리즘의 여부는 근사 알고리즘(approximate algorithm)인지 여부와
+# 탐욕 알고리즘의 여부는 근사 알고리즘(approximate algorithm)인지 아닌지 여부와
 # 관계없이 문제를 해결해가는 알고리즘의 방법과 관계가 있다.
 
 # 8-5
