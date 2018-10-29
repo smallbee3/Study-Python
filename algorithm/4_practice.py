@@ -2,6 +2,34 @@
 # -> 2_recursion.py 에서 풀이
 
 
+# # 181027
+# # 복습하다가 sum 함수에서부터 막힘
+#
+# def sum1(arr):
+#     total = 0
+#     for i in arr:
+#         total += i
+#     return total
+#
+#
+# # 처참하게 박살남.
+# # def sum1(arr):
+# #     if len(arr) > 0:
+# #         sum_num = sum_num + arr[0]
+# #     return sum_num + sum1(arr[1:])
+#
+#
+# def sum2(arr):
+#     if len(arr) == 1:
+#         return arr[0]
+#     else:
+#         return arr[0] + sum1(arr[1:])
+#
+#
+# print(sum1([1, 2, 3, 100]))
+# print(sum2([1, 2, 3, 100]))
+
+
 def sum(arr):
     if arr != []:
         return arr[0] + sum(arr[1:])
@@ -14,6 +42,8 @@ print(sum([1, 2, 3, 4]))
 
 
 # # 4-2 리스트에 포함된 원소의 숫자를 세는 재귀 함수를 작성해 보세요.
+
+
 from helper import my_timer
 
 
@@ -51,6 +81,8 @@ print(count_num3([1, 2, 3, 4, 5, 100]))
 
 
 # # 4-3 리스트에서 가장 큰 수를 찾아보세요.
+
+
 def find_big_element(arr):
     max = arr[0]
     for i in range(len(arr)-1):
@@ -77,8 +109,9 @@ def find_big_element2(arr):
         max = arr[0] if arr[0] > arr[1] else arr[1]
 
         result = find_big_element2(arr[2:])
-        if result != None and max < result:
-            max = result
+        # if result != None and max < result:
+        #     max = result
+        max = result if result is not None and max < result else max
         return max
 
 
