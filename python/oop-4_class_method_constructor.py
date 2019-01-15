@@ -93,6 +93,7 @@ print(person_2)
 print(type(person_2))
 
 
+# 2) Create object through 'function' outside of the related class
 def ssn_parser(ssn):
     front, back = ssn.split('-')
     sex = back[0]
@@ -113,7 +114,6 @@ def ssn_parser(ssn):
     return year, month, day, sex
 
 
-# 2) Create object through 'function' outside of the related class
 print()
 person_1 = Person(*ssn_parser(ssn_1))
 print(person_1)
