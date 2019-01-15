@@ -56,7 +56,7 @@ print(person_2)
 # 일요일 날짜 오브젝트 생성
 my_date = datetime.date(2016, 10, 9)
 
-# 클래스를 통하여 스태틱 메소드 호출
+# 1) 클래스를 통하여 스태틱 메소드 호출
 print(Person.is_work_day(my_date))
-# 인스턴스를 통하여 스태틱 메소드 호출
+# 2) 인스턴스를 통하여 스태틱 메소드 호출
 print(person_1.is_work_day(my_date))
