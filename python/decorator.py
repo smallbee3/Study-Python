@@ -69,8 +69,10 @@
 # print()
 # display_info('John', 25)
 
-
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+
+
 import datetime
 import time
 
@@ -102,7 +104,8 @@ def my_timer(original_function):  # 1
     return wrapper
 
 
-@my_timer  # 2
+# @my_logger  # 2
+@my_timer  # 1
 def display_info(name, age):
     time.sleep(1)
     print('display_info({}, {}) 함수가 실행됐습니다.'.format(name, age))
