@@ -67,13 +67,13 @@
 # (4)
 # https://github.com/Fastcampus-WPS-7th/Python/blob/master/lecture/09.%20함수.md#global키워드와-인자argument전달의-차이
 
-# global_level = 100
-# def level_add(value):
-#     value += 30
-#     print(value)
-#
-# level_add(global_level)
-# print(global_level)
+global_level = 100
+def level_add(value):
+    value += 30
+    print(value)
+
+level_add(global_level)
+print(global_level)
 
 
 # global_level = 100
@@ -99,13 +99,12 @@
 
 
 # 하지만 리스트 변수가 전달된다면?
-# SyntaxError: name 'value' is assigned to before global declaration
 global_level = 100
-def level_add(list):
-    value = list[0]
-    global value
-    value += 30
-    print(value)
+def level_add(alist):
+    print(alist)
+    print(type(alist[0]))
+    alist[0] += 30
+    print(alist[0])
 
 level_add([global_level])
 print(global_level)
