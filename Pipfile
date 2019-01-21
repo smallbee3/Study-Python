@@ -7,6 +7,7 @@ verify_ssl = true
 
 [packages]
 ipython = "*"
+xlsxwriter = "*"
 
 [requires]
 python_version = "3.7"

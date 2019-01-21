@@ -1,4 +1,6 @@
+# Custom
 fluent_python/example_code
+*.xlsx
 
 ### Django ###
 *.log
